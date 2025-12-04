@@ -1,7 +1,8 @@
-FROM node:14.15.0-alpine as builder
+FROM node:18-alpine AS builder
 WORKDIR /app
-COPY . .
+COPY package*.json ./
 RUN npm install
+COPY . .
 RUN npm run build
 
 FROM nginx:alpine
